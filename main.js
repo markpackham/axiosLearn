@@ -14,7 +14,7 @@ function getTodos() {
   //   .then(res => showOutput(res))
   //   .catch(err => console.error(err));
 
-  // you don't have to do .get since that is the default but it makes the code easier to read
+  // you don't have to do .get since GET is the default but it makes the code easier to read
   axios
     .get("https://jsonplaceholder.typicode.com/todos?_limit=5", {
       timeout: 5000
@@ -35,6 +35,7 @@ function addTodo() {
 }
 
 // PUT/PATCH REQUEST
+// PUT updates the entire thing whilst PATCH is for incremental changes where the id stays the same
 function updateTodo() {
   axios
     .patch("https://jsonplaceholder.typicode.com/todos/1", {
@@ -154,6 +155,7 @@ function cancelToken() {
 // INTERCEPTING REQUESTS & RESPONSES
 axios.interceptors.request.use(
   config => {
+    // log stuff in the Console so we can see the POSTs, GETs, PATCH etc
     console.log(
       `${config.method.toUpperCase()} request sent to ${
         config.url
