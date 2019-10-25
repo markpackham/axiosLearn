@@ -1,4 +1,5 @@
 // AXIOS GLOBALS
+// We're using a JWT (Json Web Token)
 axios.defaults.headers.common["X-Auth-Token"] =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
 
@@ -17,6 +18,7 @@ function getTodos() {
   // you don't have to do .get since GET is the default but it makes the code easier to read
   axios
     .get("https://jsonplaceholder.typicode.com/todos?_limit=5", {
+      // 5 seconds/5,000 milliseconds, give up if you don't get what you want in that time
       timeout: 5000
     })
     .then(res => showOutput(res))
